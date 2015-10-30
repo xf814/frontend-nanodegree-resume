@@ -87,10 +87,43 @@ var education = {
 };
 
 var work = {
-
+	"jobs" : [
+		{
+			"employer" : "CBI Laboratory",
+			"title" : "Research Intern",
+			"dates" : "2015.7-2016.6",
+			"location" : "Beijing, China",
+			"description" : "..."
+		}
+	]
 };
 
-var project = {
-
+var projects = {
+	"projects" : [
+		{
+			"title" : "Cas9 off-target site searching tool",
+			"dates" : 2015,
+			"description" : "..."
+		}
+	]
 };
 
+if(bio.skills.length != 0){
+	$("#header").append(HTMLheaderName.replace("%data%","Feng Xiong"));
+	$("#header").append(HTMLskillsStart);
+	$("#header").append(HTMLskills.replace("%data%",bio.skills.join(" ")));
+}
+
+for(index in work.jobs){
+	$("#workExperience").append(HTMLworkStart);
+
+	var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[index].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[index].title);
+	var formattedDates = HTMLworkDates.replace("%data%",work.jobs[index].dates);
+	var formattedLocation = HTMLworkLocation.replace("%data%",work.jobs[index].location);
+	var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[index].description);
+	
+	var formattedWorkInfo = formattedEmployer + formattedTitle + 
+		formattedDates + formattedLocation + formattedDescription;
+	$(".work-entry:last").append(formattedWorkInfo);
+}
