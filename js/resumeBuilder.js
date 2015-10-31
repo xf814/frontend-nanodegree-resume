@@ -55,7 +55,7 @@ var bio = {
 	},
 	"welcomeMessage" : "Welcome to my homepage",
 	"skills" : [
-		"Programming","Playing Piano"
+		"Skill-1","Skill-2","Skill-3","Skill-4"
 	],
 	"bioPic":"images/self-image.png"
 };
@@ -124,13 +124,16 @@ bio.display = function(){
 	var formattedBioPic = HTMLbioPic.replace("%data%",bio.bioPic);
 	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 	//var formattedSkills = HTMLskills.replace("%data%",bio.skills.join(" "));
-	var formattedSkills;
+	
+	$("#header").prepend(HTMLskillsStart);
+	var formattedSkills = "";
 	for(index in bio.skills){
-		formattedSkills += HTMLskills.replace("%data%",bio.skills[index]);
+		$("#skills").append(HTMLskills.replace("%data%",bio.skills[index]));
 	}
 
-	$("#header").prepend(formattedSkills);
-	$("#header").prepend(HTMLskillsStart);
+	//$("#header").prepend(HTMLskillsStart);
+	//$("#skills").text(formattedSkills);
+	//console.log($("#skills").text(formattedSkills));
 	$("#header").prepend(formattedWelcomeMsg);
 	$("#header").prepend(formattedBioPic);
 	$("#header").prepend(formattedEmail);
