@@ -51,7 +51,7 @@ var bio = {
 		"email" : "xfxf820@163.com",
 		"github" : "xf814",
 		"twitter" : "none",
-		"location" : "Beijing, China"
+		"location" : "Shenzhen, China"
 	},
 	"welcomeMessage" : "Welcome to my homepage",
 	"skills" : [
@@ -120,7 +120,7 @@ if(bio.skills.length != 0){
 bio.display = function(){
 	var formattedName = HTMLheaderName.replace("%data%",bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
-	var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
+	//var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
 	var formattedBioPic = HTMLbioPic.replace("%data%",bio.bioPic);
 	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 	//var formattedSkills = HTMLskills.replace("%data%",bio.skills.join(" "));
@@ -136,7 +136,13 @@ bio.display = function(){
 	//console.log($("#skills").text(formattedSkills));
 	$("#header").prepend(formattedWelcomeMsg);
 	$("#header").prepend(formattedBioPic);
-	$("#header").prepend(formattedEmail);
+	//$("#header").prepend(formattedEmail);
+	var formattedContacts = "";
+	var contactWays = ['mobile','email','github','twitter','location'];
+	for(index in contactWays){
+		formattedContacts += bio.contacts[contactWays[index]]
+	}
+;
 	$("#header").prepend(formattedRole);
 	$("#header").prepend(formattedName);	
 
@@ -182,3 +188,4 @@ var inName = function(){
 bio.display();
 work.display();
 projects.display();
+$("#mapDiv").append(googleMap);
