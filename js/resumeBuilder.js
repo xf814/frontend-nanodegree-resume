@@ -120,12 +120,20 @@ if(bio.skills.length != 0){
 bio.display = function(){
 	var formattedName = HTMLheaderName.replace("%data%",bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
-	//var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
+	//contact info
+	var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile)
+	var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
+	var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.email);
+	var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.email);
+	var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.email);
+	
 	var formattedBioPic = HTMLbioPic.replace("%data%",bio.bioPic);
 	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 	//var formattedSkills = HTMLskills.replace("%data%",bio.skills.join(" "));
 	
-	$("#header").prepend(HTMLskillsStart);
+	$("#header").append(formattedWelcomeMsg);
+	$("#header").append(formattedBioPic);
+	$("#header").append(HTMLskillsStart);
 	var formattedSkills = "";
 	for(index in bio.skills){
 		$("#skills").append(HTMLskills.replace("%data%",bio.skills[index]));
@@ -134,15 +142,21 @@ bio.display = function(){
 	//$("#header").prepend(HTMLskillsStart);
 	//$("#skills").text(formattedSkills);
 	//console.log($("#skills").text(formattedSkills));
-	$("#header").prepend(formattedWelcomeMsg);
-	$("#header").prepend(formattedBioPic);
-	//$("#header").prepend(formattedEmail);
-	var formattedContacts = "";
-	var contactWays = ['mobile','email','github','twitter','location'];
-	for(index in contactWays){
-		formattedContacts += bio.contacts[contactWays[index]]
-	}
-;
+
+	
+	/*
+	$("#header").prepend(formattedMobile);
+	$("#header").prepend(formattedEmail);
+	$("#header").prepend(formattedTwitter);
+	$("#header").prepend(formattedGithub);
+	$("#header").prepend(formattedLocation);
+	*/
+	$("#topContacts").append(formattedMobile);
+	$("#topContacts").append(formattedEmail);
+	$("#topContacts").append(formattedTwitter);
+	$("#topContacts").append(formattedGithub);
+	$("#topContacts").append(formattedLocation);
+
 	$("#header").prepend(formattedRole);
 	$("#header").prepend(formattedName);	
 
